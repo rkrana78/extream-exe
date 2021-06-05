@@ -24,6 +24,9 @@ const LoginScreen = ({ navigation }) => {
                 navigation.replace('Chat');
             } else {
                 // No user is signed in.
+
+                navigation.canGoBack() &&
+                navigation.popToTop();
             }
         });
 
