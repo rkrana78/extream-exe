@@ -9,21 +9,6 @@ import { GiftedChat } from 'react-native-gifted-chat'
 const ChatScreen = ({ navigation }) => {
     const [messages, setMessages] = useState([]);
 
- /* useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-    ])
-  }, []) */
-
   useLayoutEffect(() => {
      const unsubscribe = db.collection('chats').orderBy('createdAt',
       'desc').onSnapshot(snapshot=> setMessages(
@@ -76,10 +61,8 @@ const ChatScreen = ({ navigation }) => {
     }, [])
     const signOut = () => {
         auth.signOut().then(() => {
-            // Sign-out successful.
             navigation.replace('Login')
         }).catch((error) => {
-            // An error happened.
         });
     }
     return (
@@ -97,4 +80,3 @@ const ChatScreen = ({ navigation }) => {
 }
 
 export default ChatScreen
-
